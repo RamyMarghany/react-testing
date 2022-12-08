@@ -57,10 +57,14 @@ describe("Form", () => {
     const termsElement = screen.getByRole("checkbox");
     expect(termsElement).toBeInTheDocument();
 
-    const termsElement2 = screen.getByLabelText(
-      "I agree to the terms and conditions"
-    );
+    /** Subtext */
+    const termsElement2 = screen.getByLabelText("I agree to the terms", {
+      exact: false,
+    });
     expect(termsElement2).toBeInTheDocument();
+
+    const termsElement3 = screen.getByLabelText(/I agree to the terms/i);
+    expect(termsElement3).toBeInTheDocument();
 
     const submitElement = screen.getByRole("button");
     expect(submitElement).toBeInTheDocument();
