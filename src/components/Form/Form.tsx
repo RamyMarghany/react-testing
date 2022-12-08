@@ -3,10 +3,18 @@ export const Form = () => {
     <>
       <h1>Job app form</h1>
       <h2>Section 1</h2>
+      <span title="close">X</span>
+      <div data-testid="custom-element">Custom HTML Element</div>
       <form>
         <div>
           <label htmlFor="name">Name</label>
-          <input type="text" id="name" />
+          <input
+            type="text"
+            id="name"
+            placeholder="full name"
+            value="Ramy"
+            onChange={() => {}}
+          />
         </div>
         <div>
           <label htmlFor="bio">Bio</label>
@@ -30,6 +38,7 @@ export const Form = () => {
           </label>
         </div>
         <button>Submit</button>
+        <p>Submit</p>
       </form>
     </>
   );
