@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, logRoles } from "@testing-library/react";
 import { Skills } from "./Skills";
 
 /**
@@ -50,7 +50,12 @@ describe("Skills component", () => {
         • The promise is rejected if no elements are found after a default timeout of 1000ms 
 */
   test("start learning button is eventually displayed", async () => {
-    render(<Skills skills={skills} />);
+    const view= render(<Skills skills={skills} />);
+    // To display a list of roles presents in the dom.
+    logRoles(view.container);
+
+    // To visualize a formatted state of dom tree.
+    // screen.debug(); for debugging;
     const buttonElement = await screen.findByRole(
       "button",
       {
@@ -60,4 +65,6 @@ describe("Skills component", () => {
     );
     expect(buttonElement).toBeInTheDocument();
   });
+
+  // .querySelector is not recommended because it querys attributes that're invisivble for user
 });
