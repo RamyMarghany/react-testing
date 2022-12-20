@@ -1,5 +1,5 @@
-import { render, screen, logRoles } from "@testing-library/react";
-import { Skills } from "./Skills";
+import { render, screen, logRoles } from '@testing-library/react'
+import { Skills } from './Skills'
 
 /**
  * getBy and getAllBy class of queries to assert if elements are 'present' in the DOM.
@@ -7,37 +7,37 @@ import { Skills } from "./Skills";
  * findBy and findALlBy are using when we we have async code, can set a custom timeout by using {timeout:2000}.
  * */
 
-describe("Skills component", () => {
-  const skills = ["html", "css", "js"];
+describe('Skills component', () => {
+  const skills = ['html', 'css', 'js']
 
-  test("renders correctly ", () => {
-    render(<Skills skills={skills} />);
-    const listElement = screen.getByRole("list");
-    expect(listElement).toBeInTheDocument();
-  });
+  test('renders correctly ', () => {
+    render(<Skills skills={skills} />)
+    const listElement = screen.getByRole('list')
+    expect(listElement).toBeInTheDocument()
+  })
 
-  test("renders a list of skills correctly ", () => {
-    render(<Skills skills={skills} />);
-    const listElement = screen.getAllByRole("listitem");
-    expect(listElement).toHaveLength(skills.length);
-  });
+  test('renders a list of skills correctly ', () => {
+    render(<Skills skills={skills} />)
+    const listElement = screen.getAllByRole('listitem')
+    expect(listElement).toHaveLength(skills.length)
+  })
 
-  test("renders login button correctly", () => {
-    render(<Skills skills={skills} />);
-    const buttonElement = screen.getByRole("button", { name: "Login" });
-    expect(buttonElement).toBeInTheDocument();
-  });
+  test('renders login button correctly', () => {
+    render(<Skills skills={skills} />)
+    const buttonElement = screen.getByRole('button', { name: 'Login' })
+    expect(buttonElement).toBeInTheDocument()
+  })
 
   /** using queryBy to select an element that "not present" in the DOM  */
   /** queryBy return an object that match the query or null if not matched */
   /** queryAllBy return an array of objects that match the query or an empty array if not matched */
-  test("renders learning button correctly", () => {
-    render(<Skills skills={skills} />);
-    const buttonElement = screen.queryByRole("button", {
-      name: "Start learning",
-    });
-    expect(buttonElement).not.toBeInTheDocument();
-  });
+  test('renders learning button correctly', () => {
+    render(<Skills skills={skills} />)
+    const buttonElement = screen.queryByRole('button', {
+      name: 'Start learning',
+    })
+    expect(buttonElement).not.toBeInTheDocument()
+  })
 
   /**
    * findBy
@@ -49,22 +49,22 @@ describe("Skills component", () => {
         • Returns a promise which resolves to an array of elements when any elements are found which match the given query
         • The promise is rejected if no elements are found after a default timeout of 1000ms 
 */
-  test("start learning button is eventually displayed", async () => {
-    const view= render(<Skills skills={skills} />);
+  test('start learning button is eventually displayed', async () => {
+    const view = render(<Skills skills={skills} />)
     // To display a list of roles presents in the dom.
-    logRoles(view.container);
+    logRoles(view.container)
 
     // To visualize a formatted state of dom tree.
     // screen.debug(); for debugging;
     const buttonElement = await screen.findByRole(
-      "button",
+      'button',
       {
-        name: "Start learning",
+        name: 'Start learning',
       },
       { timeout: 2000 }
-    );
-    expect(buttonElement).toBeInTheDocument();
-  });
+    )
+    expect(buttonElement).toBeInTheDocument()
+  })
 
   // .querySelector is not recommended because it querys attributes that're invisivble for user
-});
+})

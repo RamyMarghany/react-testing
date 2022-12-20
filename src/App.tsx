@@ -1,10 +1,10 @@
-import "./App.css";
-import { Counter } from "./components/Counter/Counter";
-import { Form } from "./components/Form/Form";
-import { Skills } from "./components/Skills/Skills";
+import './App.css'
+import { Counter } from './components/Counter/Counter'
+import { Form } from './components/Form/Form'
+import { Skills } from './components/Skills/Skills'
 
 function App() {
-  const skills = ["html", "css", "js"];
+  const skills = ['html', 'css', 'js']
   return (
     <div className="App">
       <Form />
@@ -12,12 +12,12 @@ function App() {
       <hr />
       <br />
       <Skills skills={skills} />
-       <br />
+      <br />
       <hr />
       <br />
-      <Counter/>
+      <Counter />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

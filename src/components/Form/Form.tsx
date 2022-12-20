@@ -41,5 +41,5 @@ export const Form = () => {
         <p>Submit</p>
       </form>
     </>
-  );
-};
+  )
+}
